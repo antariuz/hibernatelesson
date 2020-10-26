@@ -1,51 +1,28 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
 public class PersonDTO {
 
-    private Long ID;
+    @Getter
+    private Long id;
+
+    @Getter @Setter
     private String name;
+
+    @Getter @Setter
     private String surname;
-    private String sex;
+
+    @Getter @Setter
+    private String gender;
+
+    @Getter @Setter
     private Integer age;
 
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
+    public PersonDTO() {
     }
 
 }

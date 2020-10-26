@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import model.Car;
 
@@ -12,7 +12,7 @@ public interface CarDAO {
 
     Car getCarByID(Long id);
 
-    void updateCarByID(Long id);
+    void updateCar(Car car);
 
     void deleteCarByID(Long id);
 

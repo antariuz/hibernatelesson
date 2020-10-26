@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import model.Person;
 
@@ -12,7 +12,7 @@ public interface PersonDAO {
 
     Person getPersonByID(Long id);
 
-    void updatePersonByID(Long id);
+    void updatePerson(Person person);
 
     void deletePersonByID(Long id);
 
