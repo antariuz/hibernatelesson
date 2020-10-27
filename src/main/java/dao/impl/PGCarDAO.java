@@ -21,18 +21,16 @@ public class PGCarDAO implements CarDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(car);
-        //session.getIdentifier(car);
         transaction.commit();
         session.close();
-        return null; // XxxX
+        return null; //session.getIdentifier(car);
     }
 
     public Car getCarByID(Long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Car car = session.get(Car.class, id);
         session.close();
-        return car;
-        // return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(User.class, id);  ???
+        return car; // return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Car.class, id);  ???
     }
 
     public void updateCar(Car car) {

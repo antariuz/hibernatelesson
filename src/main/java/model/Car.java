@@ -12,7 +12,7 @@ public class Car {
     @Getter @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Getter @Setter @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "driver_id")
+    @Getter @Setter @ManyToMany(fetch = FetchType.LAZY) @JoinColumn(name = "driver_id")
     private Long driverID;
 
     @Getter @Setter
