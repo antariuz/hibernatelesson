@@ -7,6 +7,7 @@ import model.Person;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,9 @@ public class PGPersonDAO implements PersonDAO {
         Transaction transaction = session.beginTransaction();
         session.save(person);
         transaction.commit();
+        Long lastId = ((BigInteger) session.createSQLQuery("SELECT LAST_INSERT_ID()").uniqueResult()).longValue();
         session.close();
-        return null; //session.getIdentifier(person);
+        return lastId;
     }
 
     public Person getPersonByID(Long id) {

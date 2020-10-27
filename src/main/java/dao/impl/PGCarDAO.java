@@ -6,6 +6,7 @@ import model.Car;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class PGCarDAO implements CarDAO {
@@ -22,8 +23,9 @@ public class PGCarDAO implements CarDAO {
         Transaction transaction = session.beginTransaction();
         session.save(car);
         transaction.commit();
+        Long lastId = ((BigInteger) session.createSQLQuery("SELECT LAST_INSERT_ID()").uniqueResult()).longValue();
         session.close();
-        return null; //session.getIdentifier(car);
+        return lastId;
     }
 
     public Car getCarByID(Long id) {
