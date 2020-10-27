@@ -6,22 +6,14 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@ToString @Entity @Table(name = "persons")
+@Getter @Setter @ToString @Entity @Table(name = "person")
 public class Person {
 
-    @Getter @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Getter @Setter
     private String name;
-
-    @Getter @Setter
     private String surname;
-
-    @Getter @Setter
     private String gender;
-
-    @Getter @Setter
     private Integer age;
 
     public Person() {

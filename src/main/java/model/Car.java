@@ -6,25 +6,16 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@ToString @Entity @Table(name = "cars")
+@Getter @Setter @ToString @Entity @Table(name = "car")
 public class Car {
 
-    @Getter @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Getter @Setter @ManyToMany(fetch = FetchType.LAZY) @JoinColumn(name = "driver_id")
+    @ManyToMany(fetch = FetchType.LAZY) @JoinColumn(name = "driver_id")
     private Long driverID;
-
-    @Getter @Setter
     private String brand;
-
-    @Getter @Setter
     private String model;
-
-    @Getter @Setter
     private String engineType;
-
-    @Getter @Setter
     private Integer manufacturedYear;
 
     public Car() {

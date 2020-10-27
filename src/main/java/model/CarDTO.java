@@ -4,25 +4,18 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+
+@Getter @Setter @ToString
 public class CarDTO {
 
-    @Getter
     private Long id;
-
-    @Getter @Setter
     private Long driverID;
-
-    @Getter @Setter
     private String brand;
-
-    @Getter @Setter
     private String model;
-
-    @Getter @Setter
     private String engineType;
-
-    @Getter @Setter
     private Integer manufacturedYear;
 
     public CarDTO() {
