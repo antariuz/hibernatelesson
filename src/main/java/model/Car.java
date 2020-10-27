@@ -1,12 +1,13 @@
 package model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
 
-@Getter @Setter @ToString @Entity @Table(name = "car")
+@NoArgsConstructor @Getter @Setter @ToString @Entity @Table(name = "car")
 public class Car {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +18,5 @@ public class Car {
     private String model;
     private String engineType;
     private Integer manufacturedYear;
-
-    public Car() {
-    }
 
 }

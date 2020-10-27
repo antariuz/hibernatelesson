@@ -1,12 +1,13 @@
 package model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
 
-@Getter @Setter @ToString @Entity @Table(name = "person")
+@NoArgsConstructor @Getter @Setter @ToString @Entity @Table(name = "person")
 public class Person {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +16,5 @@ public class Person {
     private String surname;
     private String gender;
     private Integer age;
-
-    public Person() {
-    }
 
 }
