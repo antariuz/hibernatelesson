@@ -1,36 +1,41 @@
 package service.impl;
 
-import dao.PersonDAO;
+import dao.DAO;
 import dao.impl.PGPersonDAO;
 import model.Person;
-import service.PersonService;
+import service.Service;
 
 import java.util.List;
 
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl implements Service<Person> {
 
-    public List<Person> getAllPerson() {
-        return new PGPersonDAO().getAllPerson();
+    @Override
+    public List<Person> getAll() {
+        return new PGPersonDAO().getAll();
     }
 
-    public Long addPerson(Person person) {
-        return new PGPersonDAO().addPerson(person);
+    @Override
+    public Long add(Person person) {
+        return new PGPersonDAO().add(person);
     }
 
-    public Person getPersonByID(Long id) {
-        return new PGPersonDAO().getPersonByID(id);
+    @Override
+    public Person getByID(Long id) {
+        return new PGPersonDAO().getByID(id);
     }
 
-    public void updatePerson(Person person) {
-        PersonDAO personDAO = new PGPersonDAO();
-        personDAO.updatePerson(person);
-        // new PGPersonDAO().updatePerson(person); ???
+    @Override
+    public void update(Person person) {
+        DAO<Person> personDAO = new PGPersonDAO();
+        personDAO.update(person);
+        // new PGPersonDAO().update(person); ???
     }
 
-    public void deletePersonByID(Long id) {
-        PersonDAO personDAO = new PGPersonDAO();
-        personDAO.deletePersonByID(id);
-        // new PGPersonDAO().deletePersonByID(id); ???
+    @Override
+    public void deleteByID(Long id) {
+        DAO<Person> personDAO = new PGPersonDAO();
+        personDAO.deleteByID(id);
+        // new PGPersonDAO().deleteByID(id); ???
     }
 
 }

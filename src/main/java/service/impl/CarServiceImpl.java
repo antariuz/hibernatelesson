@@ -1,36 +1,41 @@
 package service.impl;
 
-import dao.CarDAO;
+import dao.DAO;
 import dao.impl.PGCarDAO;
 import model.Car;
-import service.CarService;
+import service.Service;
 
 import java.util.List;
 
-public class CarServiceImpl implements CarService {
+public class CarServiceImpl implements Service<Car> {
 
-    public List<Car> getAllCar() {
-        return new PGCarDAO().getAllCar();
+    @Override
+    public List<Car> getAll() {
+        return new PGCarDAO().getAll();
     }
 
-    public Long addCar(Car car) {
-        return new PGCarDAO().addCar(car);
+    @Override
+    public Long add(Car car) {
+        return new PGCarDAO().add(car);
     }
 
-    public Car getCarByID(Long id) {
-        return new PGCarDAO().getCarByID(id);
+    @Override
+    public Car getByID(Long id) {
+        return new PGCarDAO().getByID(id);
     }
 
-    public void updateCar(Car car) {
-        CarDAO carDAO = new PGCarDAO();
-        carDAO.updateCar(car);
-        // new PGCarDAO().updateCar(car); ???
+    @Override
+    public void update(Car car) {
+        DAO<Car> carDAO = new PGCarDAO();
+        carDAO.update(car);
+        // new PGCarDAO().update(car); ???
     }
 
-    public void deleteCarByID(Long id) {
-        CarDAO carDAO = new PGCarDAO();
-        carDAO.deleteCarByID(id);
-        // new PGCarDAO().deleteCarByID(id); ???
+    @Override
+    public void deleteByID(Long id) {
+        DAO<Car> carDAO = new PGCarDAO();
+        carDAO.deleteByID(id);
+        // new PGCarDAO().deleteByID(id); ???
     }
 
 }

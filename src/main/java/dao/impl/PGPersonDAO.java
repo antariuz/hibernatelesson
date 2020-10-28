@@ -1,25 +1,26 @@
 package dao.impl;
 
-import dao.PersonDAO;
+import dao.DAO;
 import hibernate.HibernateSessionFactoryUtil;
-import model.Car;
 import model.Person;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
-public class PGPersonDAO implements PersonDAO {
-    public List<Person> getAllPerson() {
+public class PGPersonDAO implements DAO<Person> {
+
+    @Override
+    public List<Person> getAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         List<Person> personList = session.createQuery("From Person ").list();
         session.close();
         return personList;
     }
 
-    public Long addPerson(Person person) {
+    @Override
+    public Long add(Person person) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(person);
@@ -29,14 +30,16 @@ public class PGPersonDAO implements PersonDAO {
         return lastId;
     }
 
-    public Person getPersonByID(Long id) {
+    @Override
+    public Person getByID(Long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Person person = session.get(Person.class, id);
         session.close();
         return person; // return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Person.class, id);  ???
     }
 
-    public void updatePerson(Person person) {
+    @Override
+    public void update(Person person) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.update(person);
@@ -44,11 +47,13 @@ public class PGPersonDAO implements PersonDAO {
         session.close();
     }
 
-    public void deletePersonByID(Long id) {
+    @Override
+    public void deleteByID(Long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(id);
         transaction.commit();
         session.close();
     }
+
 }
