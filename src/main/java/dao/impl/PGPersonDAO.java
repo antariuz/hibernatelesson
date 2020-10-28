@@ -15,7 +15,7 @@ public class PGPersonDAO implements DAO<Person> {
     @Override
     public List<Person> getAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        List<Person> personList = session.createQuery("From Person ").list();
+        List personList = session.createQuery("From Person ").list();
         session.close();
         return personList;
     }
