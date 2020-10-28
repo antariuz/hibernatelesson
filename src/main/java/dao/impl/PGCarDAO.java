@@ -3,6 +3,7 @@ package dao.impl;
 import dao.DAO;
 import hibernate.HibernateSessionFactoryUtil;
 import model.Car;
+import model.Person;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -25,7 +26,7 @@ public class PGCarDAO implements DAO<Car> {
         Transaction transaction = session.beginTransaction();
         session.save(car);
         transaction.commit();
-        Long lastId = ((BigInteger) session.createSQLQuery("SELECT LAST_INSERT_ID()").uniqueResult()).longValue();
+        Long lastId = ((BigInteger) session.createSQLQuery("SELECT LASTVAL()").uniqueResult()).longValue();
         session.close();
         return lastId;
     }
