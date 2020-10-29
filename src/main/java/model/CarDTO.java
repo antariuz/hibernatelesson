@@ -6,11 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
-@NoArgsConstructor @Getter @Setter @ToString
-public class CarDTO {
+@NoArgsConstructor @Getter @Setter @ToString @AllArgsConstructor
+public class CarDTO extends AbstractIdentifiableEntity {
 
-    @Setter(AccessLevel.NONE)
-    private Long id;
     private Long driver;
     private String brand;
     private String model;

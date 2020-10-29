@@ -57,12 +57,11 @@ public class PGPersonDAO implements DAO<Person> {
         session.close();
     }
 
-    public Person getDriverByID(Long id) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Car car = session.get(Car.class, id);
-        Person driver = car.getDriver();
-        session.close();
-        return driver;
-    }
+//    public Person getDriverByID(Long id) {
+//        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+//        Person driver = session.get(Car.class, id).getDriver();
+//        session.close();
+//        return driver;
+//    }
 
 }
